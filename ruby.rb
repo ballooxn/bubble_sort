@@ -1,7 +1,7 @@
 def bubble_sort(arr)
   sorted = false
-  changed = false
   until sorted
+    sorted = true
     arr.each_with_index do |num, index|
       next if arr[-1] == num
 
@@ -10,10 +10,8 @@ def bubble_sort(arr)
 
       arr[index + 1] = num
       arr[index] = next_num
-      changed = true
+      sorted = false
     end
-    sorted = true unless changed
-    changed = false
   end
   arr
 end
