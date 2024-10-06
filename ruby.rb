@@ -1,25 +1,21 @@
+def bubble_sort(arr)
+  sorted = false
+  changed = false
+  until sorted
+    arr.each_with_index do |num, index|
+      next if arr[-1] == num
 
+      next_num = arr[index + 1]
+      next unless num > next_num
 
-def bubble_sort(array)
-
-    unsorted = 1
-    while unsorted != 0 do
-        unsorted = 0
-        array.each_with_index do |n,i|
-            if n == array[-1] then next end
-            second_number = array[i+1]
-            if n > second_number
-                array[i] = second_number
-                array[i+1] = n
-                unsorted += 1
-            end
-            #
-            #If something needs to be sorted, add one to unsorted.
-            #If nothing is unsorted, unsorted should be equal to 0 and the loop should end
-        end
+      arr[index + 1] = num
+      arr[index] = next_num
+      changed = true
     end
-    array
+    sorted = true unless changed
+    changed = false
+  end
+  arr
 end
 
-
-p bubble_sort([4,3,78,2,0,99])
+p bubble_sort([4, 3, 78, 2, 0, 2])
